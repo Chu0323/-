@@ -57,7 +57,7 @@ int LocateElem(SqList* L, ElemType e)
 {
 	for (int i = 0; i < L->length; ++i)
 	{
-		if (L->elem[i].p == e.p && L->elem[i].e == e.e)
+		if (L->elem[i] == e)
 			return i + 1;
 	}
 	return ERROR;
