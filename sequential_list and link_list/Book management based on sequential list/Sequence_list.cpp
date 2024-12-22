@@ -1,39 +1,39 @@
 #include <iostream>
 #include "Sequence_list.h"
-//¹¹ÔìÒ»¸ö¿ÕµÄÏßĞÔ±íL
+//æ„é€ ä¸€ä¸ªç©ºçš„çº¿æ€§è¡¨L
 Status InitList(Sqlist *L)
 {
 	L->length = 0;
 	L->elem = (Book*)malloc(sizeof(Book) * MAX_SIZE);
 	
-	if (!L->elem) //Èç¹û¸³ÖµÊ§°Ü(ÄÚ´æ²»×ã),L->elem = NULL
+	if (!L->elem) //å¦‚æœèµ‹å€¼å¤±è´¥(å†…å­˜ä¸è¶³),L->elem = NULL
 	{
 		exit(OVERFLOW);
-		//´æ´¢·ÖÅäÊ§°Ü£¬·µ»Ø×´Ì¬Âë¸øÏµÍ³£¬·Ç0Öµ±íÊ¾Òì³£
+		//å­˜å‚¨åˆ†é…å¤±è´¥ï¼Œè¿”å›çŠ¶æ€ç ç»™ç³»ç»Ÿï¼Œé0å€¼è¡¨ç¤ºå¼‚å¸¸
 	}
 	return true;
 }
-//É¾³ıÏßĞÔ±í
+//åˆ é™¤çº¿æ€§è¡¨
 void DestroyList(Sqlist* L)
 {
 	if (L->elem)
 	{
-		free(L->elem); //±ÜÃâÖØ¸´ÊÍ·Å
-		L->elem = NULL; //ÎªÁË±ÜÃâÒâÍâ·ÃÎÊÊÍ·ÅºóµÄÄÚ´æ,×îºÃ»¹½«Ö¸Õë¸³ÖµÎªNULL
+		free(L->elem); //é¿å…é‡å¤é‡Šæ”¾
+		L->elem = NULL; //ä¸ºäº†é¿å…æ„å¤–è®¿é—®é‡Šæ”¾åçš„å†…å­˜,æœ€å¥½è¿˜å°†æŒ‡é’ˆèµ‹å€¼ä¸ºNULL
 	}
 	L->length = 0;
 }
-//Çå¿ÕÏßĞÔ±í
+//æ¸…ç©ºçº¿æ€§è¡¨
 void ClearList(Sqlist* L)
 {
 	L->length = 0;
 }
-//»ñÈ¡ÏßĞÔ±íµÄ³¤¶È
+//è·å–çº¿æ€§è¡¨çš„é•¿åº¦
 int GetListLength(Sqlist* L)
 {
 	return L->length;
 }
-//ÅĞ¶ÏÏßĞÔ±íÊÇ·ñÎª¿Õ
+//åˆ¤æ–­çº¿æ€§è¡¨æ˜¯å¦ä¸ºç©º
 int IsEmpty(Sqlist* L)
 {
 	if (!L->length)
@@ -41,28 +41,28 @@ int IsEmpty(Sqlist* L)
 	else
 		return false;
 }
-//»ñÈ¡ÏßĞÔ±íµÚi¸öÎ»ÖÃÉÏµÄÔªËØ
+//è·å–çº¿æ€§è¡¨ç¬¬iä¸ªä½ç½®ä¸Šçš„å…ƒç´ 
 int GetElem(Sqlist* L, int i, Book& e)
 {
-	if (IsEmpty(L)) //Èç¹ûÎª¿Õ£¬Ôò·µ»Øfalse
+	if (IsEmpty(L)) //å¦‚æœä¸ºç©ºï¼Œåˆ™è¿”å›false
 		return false;
-	//Èç¹ûÏßĞÔ±í²»Îª¿Õ£¬Ôò¼ì²éiÊÇ·ñºÏ·¨
+	//å¦‚æœçº¿æ€§è¡¨ä¸ä¸ºç©ºï¼Œåˆ™æ£€æŸ¥iæ˜¯å¦åˆæ³•
 	if (i < 1 || i > L->length)
 		return false;
 	e = L->elem[i - 1];
 	return true;
 }
-//ÖØÔØ==ÔËËã·û
+//é‡è½½==è¿ç®—ç¬¦
 bool operator==(Book &e1, Book &e2)
 {
 	if (!strcmp(e1.id, e2.id) && !strcmp(e1.name, e2.name) && e1.price == e2.price)
 		return true;
 	return false;
 }
-//²éÑ¯Ò»¸öÔªËØÔÚÏßĞÔ±í´¦ÓÚµÚ¼¸¸öÎ»ÖÃ
+//æŸ¥è¯¢ä¸€ä¸ªå…ƒç´ åœ¨çº¿æ€§è¡¨å¤„äºç¬¬å‡ ä¸ªä½ç½®
 int LocateElem(Sqlist* L, Book e)
 {
-	if (IsEmpty(L)) //Èç¹ûÎª¿Õ£¬Ôò·µ»Øfalse
+	if (IsEmpty(L)) //å¦‚æœä¸ºç©ºï¼Œåˆ™è¿”å›false
 		return 0;
 	for (int i = 0; i < L->length; i++)
 	{
@@ -71,10 +71,10 @@ int LocateElem(Sqlist* L, Book e)
 	}
 	return ERROR;
 }
-//²éÑ¯Ò»¸öÔªËØµÄÇ°Çı
+//æŸ¥è¯¢ä¸€ä¸ªå…ƒç´ çš„å‰é©±
 int PriorElem(Sqlist* L, Book cur_e, Book& pre_e)
 {
-	if (IsEmpty(L)) //Èç¹ûÎª¿Õ»òÕßµÚÒ»¸öÔªËØ¾ÍÊÇcur_e£¬Ôò·µ»Øfalse
+	if (IsEmpty(L)) //å¦‚æœä¸ºç©ºæˆ–è€…ç¬¬ä¸€ä¸ªå…ƒç´ å°±æ˜¯cur_eï¼Œåˆ™è¿”å›false
 		return false;
 	if (L->elem[0] == cur_e)
 		return false;
@@ -82,10 +82,10 @@ int PriorElem(Sqlist* L, Book cur_e, Book& pre_e)
 	pre_e = L->elem[ret - 2];
 	return true;
 }
-//²éÑ¯Ò»¸öÔªËØµÄºó¼Ì
+//æŸ¥è¯¢ä¸€ä¸ªå…ƒç´ çš„åç»§
 int NextElem(Sqlist* L, Book cur_e, Book& next_e)
 {
-	if (IsEmpty(L)) //Èç¹ûÎª¿Õ»òÕß×îºóÒ»¸öÔªËØ¾ÍÊÇcur_e£¬Ôò·µ»Øfalse
+	if (IsEmpty(L)) //å¦‚æœä¸ºç©ºæˆ–è€…æœ€åä¸€ä¸ªå…ƒç´ å°±æ˜¯cur_eï¼Œåˆ™è¿”å›false
 		return false;
 	if (L->elem[L->length - 1] == cur_e)
 		return false;
@@ -93,10 +93,10 @@ int NextElem(Sqlist* L, Book cur_e, Book& next_e)
 	next_e = L->elem[ret];
 	return true;
 }
-//ÔÚiÉÏ²åÈëÔªËØ
+//åœ¨iä¸Šæ’å…¥å…ƒç´ 
 int ListInsert(Sqlist* L, int i, Book e)
 {
-	//Ê×ÏÈÅĞ¶ÏiºÏ²»ºÏ·¨
+	//é¦–å…ˆåˆ¤æ–­iåˆä¸åˆæ³•
 	if (i < 1 || i > L->length + 1 || L->length == MAX_SIZE)
 		return false;
 	for (int j = L->length; j >= i; j--)
@@ -107,7 +107,7 @@ int ListInsert(Sqlist* L, int i, Book e)
 	L->length += 1;
 	return true;
 }
-//É¾³ıµÚi¸öÎ»ÖÃÉÏµÄÔªËØ
+//åˆ é™¤ç¬¬iä¸ªä½ç½®ä¸Šçš„å…ƒç´ 
 int ListDelete(Sqlist* L, int i)
 {
 	if (i < 1 || i > L->length)
@@ -117,10 +117,10 @@ int ListDelete(Sqlist* L, int i)
 	L->length -= 1;
 	return true;
 }
-//Ë³Ğò±íµÄºÏ²¢
+//é¡ºåºè¡¨çš„åˆå¹¶
 void Union(Sqlist* La, Sqlist* Lb)
 {
-	//±éÀúLbÖĞÔªËØ£¬Èç¹û²»ÔÚLaÖĞ£¬¾Í²åÈë
+	//éå†Lbä¸­å…ƒç´ ï¼Œå¦‚æœä¸åœ¨Laä¸­ï¼Œå°±æ’å…¥
 	int la_len = La->length;
 	int lb_len = Lb->length;
 	for (int j = 0; j < lb_len; j++)
@@ -129,11 +129,11 @@ void Union(Sqlist* La, Sqlist* Lb)
 		if (ret == ERROR)
 		{
 			ListInsert(La, ++la_len, Lb->elem[j]);
-			la_len = La->length; //¸üĞÂÏßĞÔ±íLaµÄ³¤¶È
+			la_len = La->length; //æ›´æ–°çº¿æ€§è¡¨Laçš„é•¿åº¦
 		}
 	}
 }
-//char Êı×éµÄ¿½±´
+//char æ•°ç»„çš„æ‹·è´
 void strcopy(char arr1[], char arr2[])
 {
 	int len = strlen(arr2);
@@ -144,9 +144,9 @@ void strcopy(char arr1[], char arr2[])
 	arr1[len] = '\0';
 }
 
-//ÓĞĞò±íµÄºÏ²¢
-/*ÒÑÖªÏßĞÔ±íLaºÍLbµÄÊı¾İÔªËØ°´price·Çµİ¼õÓĞĞòÅÅÁĞ
-ÏÖÒªÇó½«LaºÍLb¹é²¢ÎªÒ»¸öĞÂµÄÏßĞÔ±íLc,ÇÒLcÖĞµÄÊı¾İÔªËØÈÔ°´Öµ·Çµİ¼õÓĞĞòÅÅÁĞ*/
+//æœ‰åºè¡¨çš„åˆå¹¶
+/*å·²çŸ¥çº¿æ€§è¡¨Laå’ŒLbçš„æ•°æ®å…ƒç´ æŒ‰priceéé€’å‡æœ‰åºæ’åˆ—
+ç°è¦æ±‚å°†Laå’ŒLbå½’å¹¶ä¸ºä¸€ä¸ªæ–°çš„çº¿æ€§è¡¨Lc,ä¸”Lcä¸­çš„æ•°æ®å…ƒç´ ä»æŒ‰å€¼éé€’å‡æœ‰åºæ’åˆ—*/
 void Sequential_Union(Sqlist* La, Sqlist* Lb, Sqlist* Lc)
 {
 	int la_len = La->length;
@@ -154,7 +154,7 @@ void Sequential_Union(Sqlist* La, Sqlist* Lb, Sqlist* Lc)
 	Book* pa, * pb, * pc, *pa_last, *pb_last;
 	pa = La->elem;
 	pb = Lb->elem;
-	pa_last = La->elem + la_len; //Ö¸ÏòµÄÊÇ×îºóÒ»¸öÔªËØµÄÏÂÒ»¸öÎ»ÖÃ
+	pa_last = La->elem + la_len; //æŒ‡å‘çš„æ˜¯æœ€åä¸€ä¸ªå…ƒç´ çš„ä¸‹ä¸€ä¸ªä½ç½®
 	pb_last = Lb->elem + lb_len;
 	pc = Lc->elem;
 	while (pa != pa_last && pb != pb_last)
@@ -195,16 +195,16 @@ void Sequential_Union(Sqlist* La, Sqlist* Lb, Sqlist* Lc)
 		Lc->length += 1;
 	}
 }
-//´òÓ¡ÏßĞÔ±íÖĞµÄĞÅÏ¢
+//æ‰“å°çº¿æ€§è¡¨ä¸­çš„ä¿¡æ¯
 void PrintList(Sqlist* L)
 {
-	cout << "¹²ÓĞ" << L->length << "±¾Êé" << endl;
+	cout << "å…±æœ‰" << L->length << "æœ¬ä¹¦" << endl;
 	cout << "-------------" << endl;
 	for (int i = 0; i < L->length; i++)
 	{
 		cout << "ISBN:" << L->elem[i].id << endl;
-		cout << "ÊéÃû:" << L->elem[i].name << endl;
-		cout << "¼Û¸ñ:" << L->elem[i].price << endl;
+		cout << "ä¹¦å:" << L->elem[i].name << endl;
+		cout << "ä»·æ ¼:" << L->elem[i].price << endl;
 		cout << "----------------------" << endl;
 	}
 }
@@ -212,8 +212,8 @@ void PrintInfo(Book e)
 {
 	cout << "-------------" << endl;
 	cout << "ISBN:" << e.id << endl;
-	cout << "ÊéÃû:" << e.name << endl;
-	cout << "¼Û¸ñ:" << e.price << endl;
+	cout << "ä¹¦å:" << e.name << endl;
+	cout << "ä»·æ ¼:" << e.price << endl;
 	cout << "-------------" << endl;
 }
 
