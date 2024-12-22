@@ -1,24 +1,24 @@
 #include <iostream>
 using namespace std;
-//Ï¡Êè¶àÏîÊ½µÄÔËËã
+//ç¨€ç–å¤šé¡¹å¼çš„è¿ç®—
 /*
 Ax = 7 + 3x + 9x^8 + 5x^17
 Bx = 8x + 22x^7 - 9x^8
 */
 typedef struct Pnode
 {
-	float coef; //ÏµÊý
-	int expn; //Ö¸Êý
+	float coef; //ç³»æ•°
+	int expn; //æŒ‡æ•°
 	struct Pnode* next;
 } Pnode, *Polynomial;
 void createPolyn(Polynomial& L, int n)
 {
-	L = new Pnode; //ÔÚ¶ÑÇø´´½¨Ò»¸öÁ´±í
+	L = new Pnode; //åœ¨å †åŒºåˆ›å»ºä¸€ä¸ªé“¾è¡¨
 	L->next = NULL;
 
 	for (int i = 0; i < n; i++)
 	{
-		Polynomial s = new Pnode; //Éú³ÉÐÂ½áµã
+		Polynomial s = new Pnode; //ç”Ÿæˆæ–°ç»“ç‚¹
 		cin >> s->coef >> s->expn;
 		Pnode* p, * q;
 		p = L;
@@ -91,15 +91,15 @@ void printPolyn(Polynomial& L1)
 int main(void)
 {
 	Polynomial L1, L2;
-	cout << "ÇëÊäÈëµÚÒ»¸ö¶àÏîÊ½£º" << endl;
+	cout << "è¯·è¾“å…¥ç¬¬ä¸€ä¸ªå¤šé¡¹å¼ï¼š" << endl;
 	createPolyn(L1, 4);
-	cout << "ÄúÊäÈëµÄµÚÒ»¸ö¶àÏîÊ½Îª£º" << endl;
+	cout << "æ‚¨è¾“å…¥çš„ç¬¬ä¸€ä¸ªå¤šé¡¹å¼ä¸ºï¼š" << endl;
 	printPolyn(L1);
-	cout << "ÇëÊäÈëµÚ¶þ¸ö¶àÏîÊ½£º" << endl;
+	cout << "è¯·è¾“å…¥ç¬¬äºŒä¸ªå¤šé¡¹å¼ï¼š" << endl;
 	createPolyn(L2, 3);
-	cout << "ÄúÊäÈëµÄµÚ¶þ¸ö¶àÏîÊ½Îª£º" << endl;
+	cout << "æ‚¨è¾“å…¥çš„ç¬¬äºŒä¸ªå¤šé¡¹å¼ä¸ºï¼š" << endl;
 	printPolyn(L2);
-	cout << "Á½¸ö¶àÏîÊ½Ïà¼Óºó£º" << endl;
+	cout << "ä¸¤ä¸ªå¤šé¡¹å¼ç›¸åŠ åŽï¼š" << endl;
 	AddPolyn(L1, L2);
 	printPolyn(L1);
 
