@@ -4,17 +4,17 @@
 #include <cstring>
 using namespace std;
 
-#define MAX_SIZE 100 //ÏßĞÔ±í´æ´¢¿Õ¼äµÄ³õÊ¼·ÖÅäÁ¿
+#define MAX_SIZE 100 //çº¿æ€§è¡¨å­˜å‚¨ç©ºé—´çš„åˆå§‹åˆ†é…é‡
 #define ERROR -1
-typedef int Status; //º¯Êı½á¹û×´Ì¬´úÂë
+typedef int Status; //å‡½æ•°ç»“æœçŠ¶æ€ä»£ç 
 
 struct Book
 {
 	char id[20]; //ISBN
-	char name[50]; //ÊéÃû //×î³õµÄÊ±ºò£¬ÎÒÓÃµÄÊÇstringÀàĞÍ£¬µ«ÊÇ±¨´í£¬
-	int price; //¶¨¼Û
+	char name[50]; //ä¹¦å //æœ€åˆçš„æ—¶å€™ï¼Œæˆ‘ç”¨çš„æ˜¯stringç±»å‹ï¼Œä½†æ˜¯æŠ¥é”™ï¼Œ
+	int price; //å®šä»·
 };
-typedef struct //Ë³Ğò±í
+typedef struct //é¡ºåºè¡¨
 {
 	Book* elem;
 	int length;
