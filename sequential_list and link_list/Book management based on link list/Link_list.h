@@ -10,11 +10,11 @@ using namespace std;
 struct Book
 {
 	char id[20]; //ISBN
-	char name[50]; //书名
-	int price; //定价
+	char name[50]; //脢茅脙没
+	int price; //露篓录脹
 };
 
-typedef struct Lnode//链表
+typedef struct Lnode//脕麓卤铆
 {
 	int isHead;
 	union
