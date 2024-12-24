@@ -1,24 +1,24 @@
 #include "Link_list.h"
-//Á´±í³õÊ¼»¯
-Status InitList(LinkList& L) //LÊÇÒ»¸öÖ¸ÏòÍ·½áµãµÄÖ¸Õë
+//é“¾è¡¨åˆå§‹åŒ–
+Status InitList(LinkList& L) //Læ˜¯ä¸€ä¸ªæŒ‡å‘å¤´ç»“ç‚¹çš„æŒ‡é’ˆ
 {
-	L = (LinkList)new Lnode; //newÊ§°Üºó»áÖ±½ÓÅ×³öÒì³£
+	L = (LinkList)new Lnode; //newå¤±è´¥åä¼šç›´æ¥æŠ›å‡ºå¼‚å¸¸
 	if (!L)
-		return false; //ËùÒÔÕâÀïÆäÊµ²»ÓÃÅĞ¶Ï¡£µ«ÊÇCÓïÑÔÊ¹ÓÃmallocĞèÒª½øĞĞÅĞ¶Ï
-	L->isHead = 1; //´øÍ·½áµãµÄµ¥ÏòÁ´±í
-	L->length = 0; //Í·½áµãµÄÊı¾İÇø´æ·ÅÁ´±í³¤¶È
+		return false; //æ‰€ä»¥è¿™é‡Œå…¶å®ä¸ç”¨åˆ¤æ–­ã€‚ä½†æ˜¯Cè¯­è¨€ä½¿ç”¨mallocéœ€è¦è¿›è¡Œåˆ¤æ–­
+	L->isHead = 1; //å¸¦å¤´ç»“ç‚¹çš„å•å‘é“¾è¡¨
+	L->length = 0; //å¤´ç»“ç‚¹çš„æ•°æ®åŒºå­˜æ”¾é“¾è¡¨é•¿åº¦
 	L->next = NULL;
 	return true;
 }
-//ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
 int IsEmpty(LinkList L)
 {
 	if (!L->next)
-		return true; //ÆäÊµ»¹¿ÉÒÔ¼ì²éÍ·½áµãÊı¾İÇø´æ·ÅµÄÁ´±í³¤¶È
+		return true; //å…¶å®è¿˜å¯ä»¥æ£€æŸ¥å¤´ç»“ç‚¹æ•°æ®åŒºå­˜æ”¾çš„é“¾è¡¨é•¿åº¦
 	return false;
 }
-//Ïú»ÙÁ´±í
-void DestoryList(LinkList &L) //Í·½áµã²»Òª
+//é”€æ¯é“¾è¡¨
+void DestoryList(LinkList &L) //å¤´ç»“ç‚¹ä¸è¦
 {
 	Lnode* p;
 	while (L) //L != NULL
@@ -28,8 +28,8 @@ void DestoryList(LinkList &L) //Í·½áµã²»Òª
 		delete p;
 	}
 }
-//Çå¿ÕÁ´±í
-int ClearList(LinkList &L) //±£ÁôÍ·½áµã
+//æ¸…ç©ºé“¾è¡¨
+int ClearList(LinkList &L) //ä¿ç•™å¤´ç»“ç‚¹
 {
 	Lnode* p, * q;
 	p = L->next;
@@ -41,7 +41,7 @@ int ClearList(LinkList &L) //±£ÁôÍ·½áµã
 	}
 	return IsEmpty(L);
 }
-//»ñÈ¡Á´±í³¤¶È
+//è·å–é“¾è¡¨é•¿åº¦
 int ListLength(LinkList L)
 {
 	int len = 0;
@@ -54,7 +54,7 @@ int ListLength(LinkList L)
 	}
 	return len;
 }
-//charÊı×éµÄ¿½±´ char* arr1 is destination, char* arr2 is source.
+//charæ•°ç»„çš„æ‹·è´ char* arr1 is destination, char* arr2 is source.
 int strcopy(char arr1[], char arr2[])
 {
 	int len = (int)strlen(arr2);
@@ -63,21 +63,21 @@ int strcopy(char arr1[], char arr2[])
 		arr1[i] = arr2[i];
 	}
 	arr1[len] = '\0';
-	if (!strcmp(arr1, arr2)) //³É¹¦¿½±´£¬Ôòstrcmp·µ»Ø0
+	if (!strcmp(arr1, arr2)) //æˆåŠŸæ‹·è´ï¼Œåˆ™strcmpè¿”å›0
 		return true;
 	return false;
 }
-//Book½á¹¹ÌåµÄ¿½±´
+//Bookç»“æ„ä½“çš„æ‹·è´
 int bookcpy(Book &b1, Book b2)
 {
-	if (!strcopy(b1.id, b2.id)) //¿½±´Ê§°Ü
+	if (!strcopy(b1.id, b2.id)) //æ‹·è´å¤±è´¥
 		return false;
-	if (!strcopy(b1.name, b2.name)) //¿½±´Ê§°Ü
+	if (!strcopy(b1.name, b2.name)) //æ‹·è´å¤±è´¥
 		return false;
 	b1.price = b2.price;
 	return true;
 }
-//»ñÈ¡Á´±íµÚi¸öÎ»ÖÃÉÏµÄÔªËØ
+//è·å–é“¾è¡¨ç¬¬iä¸ªä½ç½®ä¸Šçš„å…ƒç´ 
 int GetElem(LinkList &L, int i, Book &e)
 {
 
@@ -92,14 +92,14 @@ int GetElem(LinkList &L, int i, Book &e)
 	bookcpy(e, p->data);
 	return true;
 }
-//ÖØÔØ==ÔËËã·û
+//é‡è½½==è¿ç®—ç¬¦
 int operator==(Book e1, Book e2)
 {
 	if (!strcmp(e1.id, e2.id) && !strcmp(e1.name, e2.name) && e1.price == e2.price)
 		return true;
 	return false;
 }
-//²éÕÒ£ºÄ³¸öÔªËØÔÚÁ´±íÖĞµÄÎ»ÖÃ
+//æŸ¥æ‰¾ï¼šæŸä¸ªå…ƒç´ åœ¨é“¾è¡¨ä¸­çš„ä½ç½®
 int LocateElem(LinkList &L, Book e)
 {
 	Lnode* p;
@@ -122,7 +122,7 @@ int LocateElem(LinkList &L, Book e)
 	else
 		return pos;
 }
-//ÔÚµÚi¸öÎ»ÖÃÉÏ²åÈëÔªËØe
+//åœ¨ç¬¬iä¸ªä½ç½®ä¸Šæ’å…¥å…ƒç´ e
 int InsertList(LinkList &L, int i, Book e)
 {
 	if (i < 1 || i > L->length + 1)
@@ -146,7 +146,7 @@ int InsertList(LinkList &L, int i, Book e)
 	L->length++;
 	return true;
 }
-//É¾³ıÁ´±íÉÏµÚi¸öÎ»ÖÃµÄÔªËØe
+//åˆ é™¤é“¾è¡¨ä¸Šç¬¬iä¸ªä½ç½®çš„å…ƒç´ e
 int DeleteList(LinkList &L, int i, Book& e)
 {
 	if (i < 1 || i > L->length)
@@ -164,13 +164,13 @@ int DeleteList(LinkList &L, int i, Book& e)
 	if (s == NULL)
 		return false;
 	else
-		bookcpy(e, s->data); //ÎÒ²»Ã÷°×ÕâÀïÎªÉ¶»áÓĞ¾¯¸æ
+		bookcpy(e, s->data); //æˆ‘ä¸æ˜ç™½è¿™é‡Œä¸ºå•¥ä¼šæœ‰è­¦å‘Š
 	p->next = s->next;
 	delete s;
 	--L->length;
 	return true;
 }
-//Í·²å·¨´´½¨Á´±í
+//å¤´æ’æ³•åˆ›å»ºé“¾è¡¨
 void CreateList_H(LinkList &L, int n)
 {
 	Lnode* p;
@@ -180,18 +180,18 @@ void CreateList_H(LinkList &L, int n)
 	for (int i = 1; i <= n; i++)
 	{
 		p = (Lnode*)new Lnode;
-		cout << "ÇëÊäÈëISBN:" << endl;
+		cout << "è¯·è¾“å…¥ISBN:" << endl;
 		cin >> p->data.id;
-		cout << "ÇëÊäÈëÊéÃû:" << endl;
+		cout << "è¯·è¾“å…¥ä¹¦å:" << endl;
 		cin >> p->data.name;
-		cout << "ÇëÊäÈë¼Û¸ñ:" << endl;
+		cout << "è¯·è¾“å…¥ä»·æ ¼:" << endl;
 		cin >> p->data.price;
 		p->next = L->next;
 		L->next = p;
 		++L->length;
 	}
 }
-//Î²²å·¨´´½¨Á´±í
+//å°¾æ’æ³•åˆ›å»ºé“¾è¡¨
 void CreateList_L(LinkList &L, int n)
 {
 	Lnode* p, *r;
@@ -202,26 +202,26 @@ void CreateList_L(LinkList &L, int n)
 	for (int i = 1; i <= n; i++)
 	{
 		p = (Lnode*)new Lnode;
-		cout << "ÇëÊäÈëISBN:" << endl;
+		cout << "è¯·è¾“å…¥ISBN:" << endl;
 		cin >> p->data.id;
-		cout << "ÇëÊäÈëÊéÃû:" << endl;
+		cout << "è¯·è¾“å…¥ä¹¦å:" << endl;
 		cin >> p->data.name;
-		cout << "ÇëÊäÈë¼Û¸ñ:" << endl;
+		cout << "è¯·è¾“å…¥ä»·æ ¼:" << endl;
 		cin >> p->data.price;
 		p->next = NULL;
-		if (!L->next) //Èç¹ûL->nextÎª¿Õ
+		if (!L->next) //å¦‚æœL->nextä¸ºç©º
 		{
 			L->next = p;
 			r = L->next;
 		}
-		else if (r) //Èç¹ûr²»Îª¿Õ
+		else if (r) //å¦‚æœrä¸ä¸ºç©º
 		{
 			r->next = p;
 			r = p;
 		}
 	}
 }
-//´òÓ¡Á´±í
+//æ‰“å°é“¾è¡¨
 void PrintLinkList(LinkList L)
 {
 	Lnode* p;
@@ -230,18 +230,18 @@ void PrintLinkList(LinkList L)
 	while (p)
 	{
 		cout << "ISBN:" << p->data.id << endl;
-		cout << "ÊéÃû:" << p->data.name << endl;
+		cout << "ä¹¦å:" << p->data.name << endl;
 		cout << "price:" << p->data.price << endl;
 		cout << "--------" << endl;
 		p = p->next;
 	}
 }
-//´òÓ¡ÔªËØ
+//æ‰“å°å…ƒç´ 
 void PrintElem(Book e)
 {
 	cout << "--------" << endl;
 	cout << "ISBN:" << e.id << endl;
-	cout << "ÊéÃû:" << e.name << endl;
+	cout << "ä¹¦å:" << e.name << endl;
 	cout << "price:" << e.price << endl;
 	cout << "--------" << endl;
 }
