@@ -1,5 +1,5 @@
 #include "link_queue.h"
-//Á´¶Ó³õÊ¼»¯
+//é“¾é˜Ÿåˆå§‹åŒ–
 int InitLinkQueue(LinkQueue& Q)
 {
 	Q.front = (Queue)new QNode;
@@ -9,14 +9,14 @@ int InitLinkQueue(LinkQueue& Q)
 	Q.rear = Q.front;
 	return true;
 }
-//ÅĞ¶ÏÁ´¶ÓÁĞÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é“¾é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 int IsEmpty(LinkQueue& Q)
 {
 	if (Q.rear == Q.front)
 		return true;
 	return false;
 }
-//Ïú»ÙÁ´¶ÓÁĞ£¨ÓĞÍ·½áµã£©
+//é”€æ¯é“¾é˜Ÿåˆ—ï¼ˆæœ‰å¤´ç»“ç‚¹ï¼‰
 int DeleteLinkQueue(LinkQueue& Q)
 {
 	QNode* p;
@@ -28,7 +28,7 @@ int DeleteLinkQueue(LinkQueue& Q)
 	}
 	return true;
 }
-//Á´¶Ó-Èë¶Ó
+//é“¾é˜Ÿ-å…¥é˜Ÿ
 int PushLinkQueue(LinkQueue& Q, QElemType& e)
 {
 	QNode* p = new QNode;
@@ -40,7 +40,7 @@ int PushLinkQueue(LinkQueue& Q, QElemType& e)
 	Q.rear = p;
 	return true;
 }
-//Á´¶Ó-³ö¶Ó(ÓĞÍ·½áµã£©
+//é“¾é˜Ÿ-å‡ºé˜Ÿ(æœ‰å¤´ç»“ç‚¹ï¼‰
 int PopLinkQueue(LinkQueue& Q, QElemType& e)
 {
 	
@@ -50,12 +50,12 @@ int PopLinkQueue(LinkQueue& Q, QElemType& e)
 	p = Q.front->next;
 	e = p->data;
 	Q.front->next = p->next;
-	if (Q.rear == p) //Èç¹û±»É¾µÄÔªËØ¸ÕºÃÊÇ×îºóÒ»¸öÔªËØ
+	if (Q.rear == p) //å¦‚æœè¢«åˆ çš„å…ƒç´ åˆšå¥½æ˜¯æœ€åä¸€ä¸ªå…ƒç´ 
 		Q.rear = Q.front;
 	delete p;
 	return true;
 }
-//Á´¶Ó-»ñÈ¡Í·ÔªËØ
+//é“¾é˜Ÿ-è·å–å¤´å…ƒç´ 
 int GetHead(LinkQueue& Q, QElemType& e)
 {
 	if (IsEmpty(Q))
