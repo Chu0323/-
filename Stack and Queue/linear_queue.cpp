@@ -1,46 +1,46 @@
 #include "Linear_queue.h"
 #include <cstdlib>
-//³õÊ¼»¯Ñ­»·¶ÓÁĞ
+//åˆå§‹åŒ–å¾ªç¯é˜Ÿåˆ—
 void InitQueue(SqQueue& Q)
 {
 	Q.base = new QElemType[MAXQSIZE];
 	if (!Q.base)
-		exit(OVERFLOW); //Á¢¼´ÖÕÖ¹³ÌĞòÖ´ĞĞ£¬²¢·µ»Ø²Ù×÷Âë¸ø²Ù×÷ÏµÍ³
-	//·µ»Ø0£¬±íÊ¾Õı³£ÍË³ö£»
+		exit(OVERFLOW); //ç«‹å³ç»ˆæ­¢ç¨‹åºæ‰§è¡Œï¼Œå¹¶è¿”å›æ“ä½œç ç»™æ“ä½œç³»ç»Ÿ
+	//è¿”å›0ï¼Œè¡¨ç¤ºæ­£å¸¸é€€å‡ºï¼›
 	Q.front = 0;
 	Q.rear = Q.front;
 }
-//»ñÈ¡Ñ­»·¶ÓÁĞµÄ³¤¶È
+//è·å–å¾ªç¯é˜Ÿåˆ—çš„é•¿åº¦
 int QueueLength(SqQueue& Q)
 {
 	return (Q.rear - Q.front + MAXQSIZE) % MAXQSIZE;
 }
-//ÅĞ¶ÏÑ­»·¶ÓÁĞÊÇ·ñÎª¿Õ
+//åˆ¤æ–­å¾ªç¯é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
 int IsEmpty(SqQueue& Q)
 {
 	if (Q.front == Q.rear)
 		return true;
 	return false;
 }
-//Ñ­»·¶ÓÁĞÈë¶Ó
+//å¾ªç¯é˜Ÿåˆ—å…¥é˜Ÿ
 int pushQueue(SqQueue& Q, QElemType e)
 {
-	if (IsEmpty(Q) || ((Q.rear + 1) % MAXQSIZE == Q.front)) //¶Ó¿Õ¡¢¶ÓÂú
+	if (IsEmpty(Q) || ((Q.rear + 1) % MAXQSIZE == Q.front)) //é˜Ÿç©ºã€é˜Ÿæ»¡
 		return false;
 	Q.base[Q.rear] = e;
-	Q.rear = (Q.rear + 1) % MAXQSIZE; //Ñ­»·¶ÓÁĞ
+	Q.rear = (Q.rear + 1) % MAXQSIZE; //å¾ªç¯é˜Ÿåˆ—
 	return true;
 }
-//Ñ­»·¶ÓÁĞ³ö¶Ó
+//å¾ªç¯é˜Ÿåˆ—å‡ºé˜Ÿ
 int popQueue(SqQueue& Q, QElemType& e)
 {
 	if (IsEmpty(Q) || ((Q.rear + 1) % MAXQSIZE == Q.front))
 		return false;
 	e = Q.base[Q.front];
-	Q.front = (Q.front + 1) % MAXQSIZE; //Ñ­»·¶ÓÁĞ
+	Q.front = (Q.front + 1) % MAXQSIZE; //å¾ªç¯é˜Ÿåˆ—
 	return true;
 }
-//È¡¶ÓÍ·ÔªËØ
+//å–é˜Ÿå¤´å…ƒç´ 
 int GetHead(SqQueue& Q, QElemType& e)
 {
 	if (IsEmpty(Q))
