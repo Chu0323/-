@@ -1,17 +1,17 @@
 #include <cstdlib>
 #include "sequential_stack.h"
 using namespace std;
-//Ë³ĞòÕ»µÄ³õÊ¼»¯
+//é¡ºåºæ ˆçš„åˆå§‹åŒ–
 void InitStack(Sqstack& s)
 {
 	s.base = (SElemType*)new Sqstack[MAXSIZE];
 	if (!s.base)
-		exit(OVERFLOW); //Á¢¼´ÖÕÖ¹³ÌĞòÖ´ĞĞ£¬²¢·µ»Ø²Ù×÷Âë¸ø²Ù×÷ÏµÍ³
-		//·µ»Ø0£¬±íÊ¾Õı³£ÍË³ö£»
+		exit(OVERFLOW); //ç«‹å³ç»ˆæ­¢ç¨‹åºæ‰§è¡Œï¼Œå¹¶è¿”å›æ“ä½œç ç»™æ“ä½œç³»ç»Ÿ
+		//è¿”å›0ï¼Œè¡¨ç¤ºæ­£å¸¸é€€å‡ºï¼›
 	s.top = s.base;
 	s.stacksize = MAXSIZE;
 }
-//´İ»ÙË³ĞòÕ»
+//æ‘§æ¯é¡ºåºæ ˆ
 int DestoryStack(Sqstack& s)
 {
 	if (s.base)
@@ -23,19 +23,19 @@ int DestoryStack(Sqstack& s)
 	}
 	return true;
 }
-//ÅĞ¶ÏË³ĞòÕ»ÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é¡ºåºæ ˆæ˜¯å¦ä¸ºç©º
 int StackEmpty(Sqstack& s)
 {
 	if (s.base == s.top)
 		return true;
 	return false;
 }
-//»ñÈ¡Ë³ĞòÕ»µÄ³¤¶È
+//è·å–é¡ºåºæ ˆçš„é•¿åº¦
 int StackLength(Sqstack& s)
 {
 	return s.top - s.base;
 }
-//Çå¿ÕÊı¾İÕ»
+//æ¸…ç©ºæ•°æ®æ ˆ
 int ClearStack(Sqstack& s)
 {
 	if (s.base)
@@ -44,9 +44,9 @@ int ClearStack(Sqstack& s)
 }
 int PushStack(Sqstack& s, SElemType e)
 {
-	if (s.top - s.base == MAXSIZE) //Õ»Âú
+	if (s.top - s.base == MAXSIZE) //æ ˆæ»¡
 	{
-		cout << "Õ»Âú£¬ÉÏÒç" << endl;
+		cout << "æ ˆæ»¡ï¼Œä¸Šæº¢" << endl;
 		return false;
 	}
 	*s.top++ = e;
@@ -54,9 +54,9 @@ int PushStack(Sqstack& s, SElemType e)
 }
 int PopStack(Sqstack& s, SElemType& e)
 {
-	if (StackEmpty(s)) //Õ»¿Õ
+	if (StackEmpty(s)) //æ ˆç©º
 	{
-		cout << "Õ»¿Õ£¬ÏÂÒç" << endl;
+		cout << "æ ˆç©ºï¼Œä¸‹æº¢" << endl;
 		return false;
 	}
 	e = *(--s.top);
