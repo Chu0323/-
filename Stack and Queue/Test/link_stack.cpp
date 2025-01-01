@@ -1,17 +1,17 @@
 #include "link_stack.h"
-//Á´Õ»³õÊ¼»¯,²»º¬Í·½Úµã
+//é“¾æ ˆåˆå§‹åŒ–,ä¸å«å¤´èŠ‚ç‚¹
 void InitStack(LinkStack& s)
 {
 	s = NULL;
 }
-//ÅĞ¶ÏÁ´Õ»ÊÇ·ñÎª¿Õ
+//åˆ¤æ–­é“¾æ ˆæ˜¯å¦ä¸ºç©º
 int StackEmpty(LinkStack& s)
 {
 	if (!s)
 		return true;
 	return false;
 }
-//ÈëÕ»
+//å…¥æ ˆ
 int PushStack(LinkStack& s, SElemType e)
 {
 	StackNode* p = (StackNode*)new StackNode;
@@ -20,7 +20,7 @@ int PushStack(LinkStack& s, SElemType e)
 	s = p;
 	return true;
 }
-//³öÕ»
+//å‡ºæ ˆ
 int PopStack(LinkStack& s, SElemType& e)
 {
 	if (StackEmpty(s))
@@ -31,7 +31,7 @@ int PopStack(LinkStack& s, SElemType& e)
 	delete p;
 	return true;
 }
-//È¡Õ»¶¥ÔªËØ
+//å–æ ˆé¡¶å…ƒç´ 
 int GetTop(LinkStack& s, SElemType& e)
 {
 	if (StackEmpty(s))
