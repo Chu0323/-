@@ -8,9 +8,9 @@
 #include <iostream>
 typedef struct Stack
 {
-	SElemType* base; //Õ»µ×Ö¸Õë
-	SElemType* top; //Õ»¶¥Ö¸Õë
-	int stacksize; //Õ»¿ÉÓÃ×î´óÈİÁ¿
+	SElemType* base; //æ ˆåº•æŒ‡é’ˆ
+	SElemType* top; //æ ˆé¡¶æŒ‡é’ˆ
+	int stacksize; //æ ˆå¯ç”¨æœ€å¤§å®¹é‡
 }Sqstack;
 void InitStack(Sqstack& s);
 int DestoryStack(Sqstack& s);
