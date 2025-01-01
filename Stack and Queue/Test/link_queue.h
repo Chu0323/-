@@ -4,7 +4,7 @@
 
 #include <iostream>
 #define QElemType int
-//链队
+//脕麓露脫
 typedef struct QNode
 {
 	QElemType data;
@@ -12,8 +12,8 @@ typedef struct QNode
 } QNode, *Queue;
 typedef struct
 {
-	Queue front; //队头指针
-	Queue rear; //队尾指针
+	Queue front; //露脫脥路脰赂脮毛
+	Queue rear; //露脫脦虏脰赂脮毛
 } LinkQueue;
 
 #endif
