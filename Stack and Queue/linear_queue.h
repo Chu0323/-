@@ -2,15 +2,15 @@
 #ifndef _LINEAR_QUEUE_H
 #define _LINEAR_QUEUE_H
 
-#define MAXQSIZE 100 //×î´ó¶ÓÁĞ³¤¶È
+#define MAXQSIZE 100 //æœ€å¤§é˜Ÿåˆ—é•¿åº¦
 #define QElemType int
 #define OVERFLOW -2
 
 typedef struct
 {
-	QElemType* base; //³õÊ¼»¯µÄ¶¯Ì¬·ÖÅä´æ´¢¿Õ¼ä
-	int front; //Í·Ö¸Õë
-	int rear; //Î²Ö¸Õë
+	QElemType* base; //åˆå§‹åŒ–çš„åŠ¨æ€åˆ†é…å­˜å‚¨ç©ºé—´
+	int front; //å¤´æŒ‡é’ˆ
+	int rear; //å°¾æŒ‡é’ˆ
 } SqQueue;
 void InitQueue(SqQueue &Q);
 int QueueLength(SqQueue& Q);
